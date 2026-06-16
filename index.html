@@ -587,6 +587,99 @@ footer { background: #0D1620; padding: 48px 5%; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.55;transform:scale(.8)} }
 
 /*  RESPONSIVE  */
+/* ── SPLIT SECTION (image + text side by side) ── */
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+.split-section.reverse { direction: rtl; }
+.split-section.reverse > * { direction: ltr; }
+
+.split-img {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+.split-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 6%;
+}
+.split-text .section-label { margin-bottom: 14px; }
+.split-text .section-h2 { margin-bottom: 18px; }
+.split-text .section-body { margin-bottom: 0; }
+
+/* Problem section with Father_alone image */
+.problem-with-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+.problem-img-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+}
+.problem-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+.problem-cards-col {
+  background: var(--navy);
+  padding: 64px 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+/* Testimonial section with son image */
+.testi-with-image {
+  background: var(--navy);
+  padding: 96px 5%;
+}
+.testi-top {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 52px;
+}
+.testi-feature-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  flex-shrink: 0;
+}
+.testi-feature-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.testi-feature-text { display: flex; flex-direction: column; justify-content: center; }
+.testi-feature-text .section-label { color: var(--amber); }
+.testi-feature-text .section-h2 { color: #fff; }
+.testi-feature-text .section-body { color: rgba(255,255,255,0.6); }
+
 @media (max-width: 1000px) {
   .hero-layout { grid-template-columns: 1fr; gap: 40px; }
   .hero-right { display: flex; justify-content: center; }
@@ -602,6 +695,17 @@ footer { background: #0D1620; padding: 48px 5%; }
   .pricing-anchor { grid-template-columns: 1fr; gap: 16px; }
   .pa-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0; }
   .pa-item:last-child { border-bottom: none; }
+
+  /* Image splits go single column on tablet */
+  .split-section,
+  .split-section.reverse,
+  .problem-with-image { grid-template-columns: 1fr; direction: ltr; }
+  .split-img,
+  .problem-img-col { min-height: 340px; order: -1; }
+  .split-text { padding: 48px 6%; }
+  .problem-cards-col { padding: 48px 5%; }
+  .testi-top { grid-template-columns: 1fr; gap: 36px; }
+  .testi-feature-img { aspect-ratio: 16 / 9; max-height: 320px; }
 }
 @media (max-width: 620px) {
   nav .nav-links { display: none; }
@@ -613,6 +717,10 @@ footer { background: #0D1620; padding: 48px 5%; }
   .health-card-value { font-size: 14px; }
   .services-grid { grid-template-columns: 1fr; }
   .cta-inner { text-align: left; }
+  .split-img,
+  .problem-img-col { min-height: 260px; }
+  .split-text { padding: 36px 5%; }
+  .testi-feature-img { aspect-ratio: 3 / 2; }
 }
 </style>
 </head>
@@ -830,10 +938,15 @@ footer { background: #0D1620; padding: 48px 5%; }
 </section>
 
 <!-- PROBLEM SECTION -->
-<section class="problem-section">
-  <span class="section-label">The gap we close</span>
-  <h2 class="section-h2">Four problems that keep you up at night.<br><em>One plan that ends all four.</em></h2>
-  <p class="section-body">You moved to Mumbai or Bangalore or Dubai for work. Your parents are in Nagpur or Lucknow or Indore. Every call ends with "haan, sab theek hai" — and you have no idea if that's true.</p>
+<section class="problem-section" style="padding: 0;">
+  <div class="problem-with-image">
+    <div class="problem-img-col">
+      <img src="./Father_alone.png" alt="Elderly father sitting alone at night in dim light" loading="lazy">
+    </div>
+    <div class="problem-cards-col">
+      <span class="section-label" style="color: var(--amber); margin-bottom: 14px; display: block;">The gap we close</span>
+      <h2 class="section-h2" style="color: #fff; margin-bottom: 14px;">Four problems that keep you up at night.<br><em>One plan that ends all four.</em></h2>
+      <p class="section-body" style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">Every call ends with "haan, sab theek hai" — and you have no idea if that's true.</p>
   <div class="problem-cards">
     <div class="problem-card">
       <p class="problem-card-num">Problem 01</p>
@@ -859,7 +972,9 @@ footer { background: #0D1620; padding: 48px 5%; }
       <p>Parents underreport. They don't want to worry you. So problems compound quietly, invisibly.</p>
       <div class="resolution"><span class="resolution-check">+</span><span>Weekly WhatsApp updates — health numbers, what happened, what's next. From us, not them.</span></div>
     </div>
-  </div>
+    </div>
+    </div><!-- end problem-cards-col -->
+  </div><!-- end problem-with-image -->
 </section>
 
 <!-- SERVICES -->
@@ -955,71 +1070,92 @@ footer { background: #0D1620; padding: 48px 5%; }
 </section>
 
 <!-- COORDINATOR -->
-<section class="coord-section">
-  <div class="coord-inner">
-    <div class="coord-profile">
-      <div class="coord-header">
-        <div class="coord-avatar">R</div>
-        <div>
-          <div class="coord-name">Ritu Sharma</div>
-          <div class="coord-title">Family Coordinator · Bangalore South</div>
-        </div>
-      </div>
-      <div class="verified-badges">
-        <div class="v-badge"> Police verified</div>
-        <div class="v-badge"> Background checked</div>
-        <div class="v-badge"> First aid certified</div>
-        <div class="v-badge"> 2 years experience</div>
-      </div>
-      <div class="coord-activity">
-        <div class="activity-item">
-          <div class="activity-dot done"></div>
-          <div>
-            <strong class="activity-text">Today, 10:30am</strong>
-            <div class="activity-text">Health check completed — BP 122/78, sugar normal. Medicines refilled.</div>
-          </div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-dot today"></div>
-          <div>
-            <strong class="activity-text">Today, 3:00pm</strong>
-            <div class="activity-text">Doctor call booked for Thursday. Prescription renewal requested.</div>
-          </div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-dot next"></div>
-          <div>
-            <strong class="activity-text">Thursday — scheduled</strong>
-            <div class="activity-text">Physiotherapy session + grocery pickup on the way back.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="coord-text">
+<section class="coord-section" style="padding: 0;">
+  <div class="split-section reverse">
+    <div class="split-text">
       <span class="section-label">Your coordinator</span>
       <h2 class="section-h2">They know your parents.<br><em>Not a case number.</em></h2>
-      <p class="section-body">Your coordinator isn't a rotating staff member. It's the same person, every visit, building real trust with your parents over time. They handle everything — so your parents feel cared for, not managed, and you stop feeling helpless from 1,000 km away.</p>
-      <div class="coord-stat-row">
+      <p class="section-body" style="margin-bottom: 28px;">Your coordinator isn't a rotating staff member. It's the same person, every visit, building real trust with your parents over time. They handle everything — so your parents feel cared for, not managed, and you stop feeling helpless from 1,000 km away.</p>
+      <div class="coord-profile" style="background: var(--cream-dark); border-radius: var(--radius); padding: 24px;">
+        <div class="coord-header">
+          <div class="coord-avatar">R</div>
+          <div>
+            <div class="coord-name">Ritu Sharma</div>
+            <div class="coord-title">Family Coordinator · Bangalore South</div>
+          </div>
+        </div>
+        <div class="verified-badges">
+          <div class="v-badge">Police verified</div>
+          <div class="v-badge">Background checked</div>
+          <div class="v-badge">First aid certified</div>
+          <div class="v-badge">2 years experience</div>
+        </div>
+        <div class="coord-activity">
+          <div class="activity-item">
+            <div class="activity-dot done"></div>
+            <div>
+              <strong class="activity-text">Today, 10:30am</strong>
+              <div class="activity-text">Health check done — BP 122/78, sugar normal. Medicines refilled.</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot today"></div>
+            <div>
+              <strong class="activity-text">Today, 3:00pm</strong>
+              <div class="activity-text">Doctor call booked for Thursday. Prescription renewal requested.</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot next"></div>
+            <div>
+              <strong class="activity-text">Thursday — scheduled</strong>
+              <div class="activity-text">Physiotherapy session + grocery pickup on the way back.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="coord-stat-row" style="margin-top: 24px;">
         <div class="coord-stat">
           <div class="coord-stat-num">25<span>min</span></div>
           <div class="coord-stat-label">Average emergency response time</div>
         </div>
         <div class="coord-stat">
           <div class="coord-stat-num">94<span>%</span></div>
-          <div class="coord-stat-label">Families renew after the first month</div>
-        </div>
-        <div class="coord-stat">
-          <div class="coord-stat-num">0</div>
-          <div class="coord-stat-label">Apps your parents need to install</div>
-        </div>
-        <div class="coord-stat">
-          <div class="coord-stat-num">1</div>
-          <div class="coord-stat-label">WhatsApp number for everything</div>
+          <div class="coord-stat-label">Families renew after month one</div>
         </div>
       </div>
     </div>
+    <div class="split-img">
+      <img src="./HM_explaining_to_mother.png" alt="PeakAge coordinator showing health update to elderly mother at home" loading="lazy">
+    </div>
   </div>
 </section>
+
+<!-- HEALTH CHECK IMAGE SPLIT -->
+<div class="split-section" style="background: var(--cream-dark);">
+  <div class="split-img">
+    <img src="./HM_checking_BP.png" alt="PeakAge coordinator checking elderly father's blood pressure at home" loading="lazy">
+  </div>
+  <div class="split-text">
+    <span class="section-label">Health check at home</span>
+    <h2 class="section-h2">BP. Sugar. ECG.<br><em>Done at their door.</em></h2>
+    <p class="section-body" style="margin-bottom: 24px;">No hospital trips. No arranging transport. No asking your parents to remember their numbers. Every 15 days, your coordinator brings the check to them. Results go directly to you.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--green-ok); flex-shrink: 0;"></span>
+        Results sent directly to your phone — not through them
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--green-ok); flex-shrink: 0;"></span>
+        Trends tracked over months — early flags, not crisis calls
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--green-ok); flex-shrink: 0;"></span>
+        Same coordinator every time — they know the baseline
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="how-section" id="how">
@@ -1124,14 +1260,34 @@ footer { background: #0D1620; padding: 48px 5%; }
   <p class="money-back"><span>↩</span> 30-day full refund guarantee. Not satisfied in the first month — every rupee back.</p>
 </section>
 
-<!-- TESTIMONIALS — all adult children now -->
-<section class="testi-section">
-  <span class="section-label">What families say</span>
-  <h2 class="section-h2">Used by families across Bangalore.<br><em>Adult children who stopped worrying.</em></h2>
+<!-- TESTIMONIALS — son image featured -->
+<section class="testi-with-image">
+  <div class="testi-top">
+    <div class="testi-feature-text">
+      <span class="section-label">What families say</span>
+      <h2 class="section-h2">Used by families across Bangalore.<br><em>Adult children who stopped worrying.</em></h2>
+      <p class="section-body" style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">The first Sunday you open the weekly update and see your parents are fine — and realise you didn't spend the week anxious — that's when it clicks.</p>
+      <div class="testi-card" style="max-width: 480px;">
+        <p class="testi-highlight">The guilt finally lifted</p>
+        <div class="testi-journey">Singapore — Koramangala, Bangalore</div>
+        <p class="testi-quote">"I moved to Singapore three years ago and felt awful about it every single day. After PeakAge, my mother called to say she was happy and didn't feel alone. That call changed everything for me."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <div class="testi-name">Priya K.</div>
+            <div class="testi-role">Singapore · Parents in Koramangala, Bangalore</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-feature-img">
+      <img src="./Relex_Son.png" alt="Adult son checking PeakAge health update on phone with relief" loading="lazy">
+    </div>
+  </div>
   <div class="testi-grid">
     <div class="testi-card">
       <p class="testi-highlight">Emergency at 11pm</p>
-      <div class="testi-journey"> Dubai →  Whitefield, Bangalore</div>
+      <div class="testi-journey">Dubai — Whitefield, Bangalore</div>
       <p class="testi-quote">"Papa had chest discomfort at 11pm. I was mid-flight from Dubai. Someone was at the door in 25 minutes. I landed to find everything handled, notes in the app, doctor already consulted."</p>
       <div class="testi-author">
         <div class="testi-avatar">N</div>
@@ -1143,8 +1299,8 @@ footer { background: #0D1620; padding: 48px 5%; }
     </div>
     <div class="testi-card">
       <p class="testi-highlight">Proactive care that surprised us</p>
-      <div class="testi-journey"> Mumbai →  Bangalore</div>
-      <p class="testi-quote">"Ritu called before we even realised Papa needed his medicines refilled. That kind of attention — I never expected it from any service. I actually stopped carrying phone anxiety for the first time in years."</p>
+      <div class="testi-journey">Mumbai — Bangalore</div>
+      <p class="testi-quote">"Ritu called before we even realised Papa needed his medicines refilled. That kind of attention — I never expected it from any service. I stopped carrying phone anxiety for the first time in years."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
         <div>
@@ -1154,20 +1310,8 @@ footer { background: #0D1620; padding: 48px 5%; }
       </div>
     </div>
     <div class="testi-card">
-      <p class="testi-highlight">The guilt finally lifted</p>
-      <div class="testi-journey"> Singapore →  Koramangala, Bangalore</div>
-      <p class="testi-quote">"I moved to Singapore three years ago and felt awful about it every single day. After PeakAge, my mother called to say she was happy and didn't feel alone. That call changed everything for me."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">P</div>
-        <div>
-          <div class="testi-name">Priya K.</div>
-          <div class="testi-role">Singapore · Parents in Koramangala, Bangalore</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card">
       <p class="testi-highlight">Worth every rupee</p>
-      <div class="testi-journey"> London →  Indiranagar, Bangalore</div>
+      <div class="testi-journey">London — Indiranagar, Bangalore</div>
       <p class="testi-quote">"I calculated what I was spending on last-minute flights home for every health scare. PeakAge costs a fraction of one ticket. And the scares have stopped because problems get caught early now."</p>
       <div class="testi-author">
         <div class="testi-avatar">V</div>
