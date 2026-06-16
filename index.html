@@ -680,47 +680,148 @@ footer { background: #0D1620; padding: 48px 5%; }
 .testi-feature-text .section-h2 { color: #fff; }
 .testi-feature-text .section-body { color: rgba(255,255,255,0.6); }
 
-@media (max-width: 1000px) {
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+  /* Hero */
   .hero-layout { grid-template-columns: 1fr; gap: 40px; }
   .hero-right { display: flex; justify-content: center; }
   .phone-shell { width: 300px; transform: scale(0.7); }
   .phone-screen { height: 780px; }
-  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cost-badge { right: -10px; }
+
+  /* Nav */
+  .nav-links a { font-size: 13px; gap: 20px; }
+
+  /* Services */
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Coordinator old inner (fallback) */
   .coord-inner { grid-template-columns: 1fr; gap: 36px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  /* Steps */
+  .steps { grid-template-columns: repeat(2, 1fr); gap: 36px; }
   .steps::before { display: none; }
+
+  /* Guilt */
   .guilt-cards { grid-template-columns: 1fr; }
   .guilt-photo img { aspect-ratio: 4 / 3; }
+
+  /* Pricing */
   .pricing-anchor { grid-template-columns: 1fr; gap: 16px; }
   .pa-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0; }
   .pa-item:last-child { border-bottom: none; }
 
-  /* Image splits go single column on tablet */
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  /* ── IMAGE SPLITS: stack on tablet ── */
   .split-section,
-  .split-section.reverse,
-  .problem-with-image { grid-template-columns: 1fr; direction: ltr; }
-  .split-img,
-  .problem-img-col { min-height: 340px; order: -1; }
-  .split-text { padding: 48px 6%; }
-  .problem-cards-col { padding: 48px 5%; }
+  .split-section.reverse { grid-template-columns: 1fr; direction: ltr; }
+
+  /* Image always comes first (top) when stacked */
+  .split-section .split-img { order: 0; min-height: 380px; }
+  .split-section .split-text { order: 1; padding: 48px 6%; }
+  .split-section.reverse .split-img { order: 0; }
+  .split-section.reverse .split-text { order: 1; }
+
+  /* Problem section */
+  .problem-with-image { grid-template-columns: 1fr; }
+  .problem-img-col { order: 0; min-height: 360px; }
+  .problem-cards-col { order: 1; padding: 52px 5%; }
+
+  /* Testimonials */
   .testi-top { grid-template-columns: 1fr; gap: 36px; }
-  .testi-feature-img { aspect-ratio: 16 / 9; max-height: 320px; }
+  .testi-feature-img { aspect-ratio: 16 / 9; max-height: 340px; width: 100%; }
+  .testi-with-image { padding: 72px 5%; }
+
+  /* Trust grid */
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 620px) {
+
+/* ── MOBILE (max 640px) ── */
+@media (max-width: 640px) {
+  /* Nav */
   nav .nav-links { display: none; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 36px; }
-  .phone-shell { width: 280px; transform: scale(0.72); }
-  .phone-screen { height: 760px; }
-  .health-card-value { font-size: 14px; }
+  nav { padding: 0 4%; }
+
+  /* Hero */
+  .hero { padding: 90px 4% 60px; }
+  .hero h1 { font-size: 34px; line-height: 1.1; }
+  .hero-sub { font-size: 15px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .phone-shell { width: 260px; transform: scale(0.68); }
+  .phone-screen { height: 740px; }
+
+  /* Steps: single column */
+  .steps { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Services: single column */
   .services-grid { grid-template-columns: 1fr; }
-  .cta-inner { text-align: left; }
-  .split-img,
+
+  /* Trust: single column */
+  .trust-grid { grid-template-columns: 1fr; }
+
+  /* Guilt cards */
+  .guilt-cards { grid-template-columns: 1fr; }
+  .guilt-photo img { aspect-ratio: 3 / 2; }
+  .guilt-section { padding: 56px 4%; }
+  .guilt-h2 { font-size: 28px; }
+
+  /* Problem section */
   .problem-img-col { min-height: 260px; }
-  .split-text { padding: 36px 5%; }
-  .testi-feature-img { aspect-ratio: 3 / 2; }
+  .problem-cards-col { padding: 40px 4%; }
+  .problem-cards { grid-template-columns: 1fr; gap: 14px; }
+
+  /* Split sections */
+  .split-img,
+  .split-section .split-img { min-height: 260px; }
+  .split-text { padding: 40px 4%; }
+  .split-section.reverse .split-text { padding: 40px 4%; }
+
+  /* Coordinator stat row */
+  .coord-stat-row { grid-template-columns: 1fr 1fr; }
+
+  /* Testimonials */
+  .testi-with-image { padding: 56px 4%; }
+  .testi-feature-img { aspect-ratio: 4 / 3; max-height: 280px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-top { gap: 28px; }
+
+  /* Pricing */
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-section { padding: 64px 4%; }
+  .pricing-anchor { padding: 20px; }
+  .pa-item-val { font-size: 22px; }
+
+  /* Cities */
+  .cities-grid { gap: 8px; }
+  .city-chip { font-size: 13px; padding: 8px 14px; }
+
+  /* FAQ */
+  .faq-section { padding: 56px 4%; }
+  .faq-q { font-size: 14px; }
+
+  /* CTA */
+  .cta-section { padding: 64px 4%; }
+  .cta-inner { text-align: left; }
+  .form-row { grid-template-columns: 1fr; }
+  .btn-cta-submit { width: 100%; justify-content: center; }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  footer { padding: 48px 4% 28px; }
+
+  /* Section spacing */
+  .section { padding: 64px 4%; }
+  .how-section { padding: 64px 4%; }
+  .services-section { padding: 64px 4%; }
+  .cities-section { padding: 56px 4%; }
+  .founder-section { padding: 56px 4%; }
+
+  /* General text */
+  .section-h2 { font-size: 26px; }
+  .section-body { font-size: 15px; }
 }
 </style>
 </head>
@@ -941,7 +1042,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <section class="problem-section" style="padding: 0;">
   <div class="problem-with-image">
     <div class="problem-img-col">
-      <img src="./Father_alone.png" alt="Elderly father sitting alone at night in dim light" loading="lazy">
+      <img src="./Father alone.png" alt="Elderly father sitting alone at night in dim light" loading="lazy">
     </div>
     <div class="problem-cards-col">
       <span class="section-label" style="color: var(--amber); margin-bottom: 14px; display: block;">The gap we close</span>
@@ -1126,7 +1227,7 @@ footer { background: #0D1620; padding: 48px 5%; }
       </div>
     </div>
     <div class="split-img">
-      <img src="./HM_explaining_to_mother.png" alt="PeakAge coordinator showing health update to elderly mother at home" loading="lazy">
+      <img src="./HM explaining to mother.png" alt="PeakAge coordinator showing health update to elderly mother at home" loading="lazy">
     </div>
   </div>
 </section>
@@ -1134,7 +1235,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <!-- HEALTH CHECK IMAGE SPLIT -->
 <div class="split-section" style="background: var(--cream-dark);">
   <div class="split-img">
-    <img src="./HM_checking_BP.png" alt="PeakAge coordinator checking elderly father's blood pressure at home" loading="lazy">
+    <img src="./HM checking BP.png" alt="PeakAge coordinator checking elderly father's blood pressure at home" loading="lazy">
   </div>
   <div class="split-text">
     <span class="section-label">Health check at home</span>
@@ -1281,7 +1382,7 @@ footer { background: #0D1620; padding: 48px 5%; }
       </div>
     </div>
     <div class="testi-feature-img">
-      <img src="./Relex_Son.png" alt="Adult son checking PeakAge health update on phone with relief" loading="lazy">
+      <img src="./Relex Son.png" alt="Adult son checking PeakAge health update on phone with relief" loading="lazy">
     </div>
   </div>
   <div class="testi-grid">
