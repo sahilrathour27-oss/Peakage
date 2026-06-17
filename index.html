@@ -117,7 +117,7 @@ nav {
 .trust-pill.amber-pill { background: var(--amber-pale); color: var(--amber); border-color: rgba(200,115,42,0.2); }
 .trust-pill.amber-pill .trust-pill-dot { background: var(--amber); }
 
-.hero-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: center; }
+.hero-layout { display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: center; }
 
 .hero-left {}
 
@@ -197,10 +197,10 @@ nav {
   border-radius: 40px;
   padding: 14px;
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.06);
-  width: 300px;
+  width: 280px;
   margin: 0 auto;
   position: relative;
-  transform: scale(0.78);
+  transform: scale(0.72);
   transform-origin: top center;
 }
 .phone-notch {
@@ -286,9 +286,35 @@ nav {
 }
 .cost-badge strong { font-size: 18px; display: block; font-weight: 600; line-height: 1.1; }
 
-/*  EMOTIONAL REFRAME (NEW SECTION)  */
+/*  TRUST STRIP — quick scan checklist directly under hero  */
+.trust-strip {
+  background: var(--cream-dark);
+  padding: 22px 5%;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.trust-strip-row {
+  max-width: 980px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 28px;
+}
+.trust-check-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13.5px; font-weight: 500; color: var(--text-secondary);
+  white-space: nowrap;
+}
+.trust-check-item .check-mark {
+  color: var(--green-ok); font-weight: 700; font-size: 14px;
+}
+.trust-strip-sub {
+  text-align: center; margin-top: 12px;
+  font-size: 12.5px; color: var(--text-muted); letter-spacing: 0.01em;
+}
+
+/*  EMOTIONAL REFRAME (NEW SECTION) — recolored to a light section so the page
+    doesn't open with two dark sections back to back  */
 .guilt-section {
-  background: var(--navy);
+  background: var(--cream);
   padding: 80px 5%;
   position: relative;
   overflow: hidden;
@@ -297,7 +323,7 @@ nav {
   content: '"';
   font-family: var(--font-display);
   font-size: 400px;
-  color: rgba(255,255,255,0.025);
+  color: rgba(27,42,59,0.03);
   position: absolute;
   top: -80px; left: 3%;
   line-height: 1;
@@ -305,23 +331,23 @@ nav {
 }
 .guilt-inner { max-width: 900px; margin: 0 auto; text-align: center; }
 .guilt-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 20px; display: block; }
-.guilt-h2 { font-family: var(--font-display); font-size: clamp(26px, 3.8vw, 48px); color: #fff; line-height: 1.15; margin-bottom: 20px; }
-.guilt-h2 em { color: var(--amber-mid); font-style: italic; }
-.guilt-sub { font-size: 17px; color: rgba(255,255,255,0.6); font-weight: 300; max-width: 560px; margin: 0 auto 34px; line-height: 1.7; }
+.guilt-h2 { font-family: var(--font-display); font-size: clamp(26px, 3.8vw, 48px); color: var(--navy); line-height: 1.15; margin-bottom: 20px; }
+.guilt-h2 em { color: var(--amber); font-style: italic; }
+.guilt-sub { font-size: 17px; color: var(--text-secondary); font-weight: 300; max-width: 560px; margin: 0 auto 34px; line-height: 1.7; }
 .guilt-photo {
   width: min(100%, 980px);
   margin: 0 auto 34px;
   border-radius: 0;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 28px 70px rgba(0,0,0,0.32);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 28px 70px rgba(27,42,59,0.16);
   position: relative;
 }
 .guilt-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(17,30,44,0) 58%, rgba(17,30,44,0.18) 100%);
+  background: linear-gradient(180deg, rgba(17,30,44,0) 58%, rgba(17,30,44,0.1) 100%);
   pointer-events: none;
 }
 .guilt-photo img {
@@ -332,10 +358,10 @@ nav {
   object-position: center;
 }
 .guilt-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
-.guilt-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius); padding: 24px; }
-.guilt-card-before { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; margin-bottom: 14px; font-style: italic; padding: 10px 12px; border-left: 2px solid rgba(255,255,255,0.12); }
-.guilt-card-after { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.55; display: flex; align-items: flex-start; gap: 8px; }
-.guilt-after-icon { color: #4ade80; flex-shrink: 0; margin-top: 1px; }
+.guilt-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
+.guilt-card-before { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; font-style: italic; padding: 10px 12px; border-left: 2px solid var(--border); }
+.guilt-card-after { font-size: 13px; color: var(--text-secondary); line-height: 1.55; display: flex; align-items: flex-start; gap: 8px; }
+.guilt-after-icon { color: var(--green-ok); flex-shrink: 0; margin-top: 1px; }
 
 /*  TRUST PROTOCOL  */
 .section { padding: 96px 5%; }
@@ -651,46 +677,53 @@ footer { background: #0D1620; padding: 48px 5%; }
   gap: 0;
 }
 
-/* Testimonial section with son image */
+/* Testimonial section with son image — stacked & centered, not side-by-side */
 .testi-with-image {
   background: var(--navy);
   padding: 96px 5%;
 }
 .testi-top {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 56px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 32px;
   margin-bottom: 52px;
 }
 .testi-feature-img {
   border-radius: var(--radius);
   overflow: hidden;
-  flex-shrink: 0;
   width: 100%;
+  max-width: 580px;
 }
 .testi-feature-img img {
   width: 100%;
   height: auto;
+  max-height: 380px;
+  object-fit: cover;
   display: block;
   border-radius: var(--radius);
 }
-.testi-feature-text { display: flex; flex-direction: column; justify-content: center; }
+.testi-feature-text { display: flex; flex-direction: column; align-items: center; max-width: 640px; }
 .testi-feature-text .section-label { color: var(--amber); }
-.testi-feature-text .section-h2 { color: #fff; }
-.testi-feature-text .section-body { color: rgba(255,255,255,0.6); }
+.testi-feature-text .section-h2 { color: #fff; text-align: center; max-width: 100%; }
+.testi-feature-text .section-body { color: rgba(255,255,255,0.6); text-align: center; max-width: 100%; }
+.testi-feature-text .testi-card { text-align: left; width: 100%; }
 
 /* ── TABLET (max 1024px) ── */
 @media (max-width: 1024px) {
   /* Hero */
   .hero-layout { grid-template-columns: 1fr; gap: 40px; }
   .hero-right { display: flex; justify-content: center; }
-  .phone-shell { width: 300px; transform: scale(0.7); }
+  .phone-shell { width: 280px; transform: scale(0.66); }
   .phone-screen { height: 780px; }
   .cost-badge { right: -10px; }
 
   /* Nav */
   .nav-links a { font-size: 13px; gap: 20px; }
+
+  /* Trust strip */
+  .trust-strip-row { gap: 18px; }
 
   /* Services */
   .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -730,8 +763,8 @@ footer { background: #0D1620; padding: 48px 5%; }
   .problem-cards-col { order: 1; padding: 52px 5%; }
 
   /* Testimonials */
-  .testi-top { grid-template-columns: 1fr; gap: 36px; }
-  .testi-feature-img { aspect-ratio: 16 / 9; max-height: 340px; width: 100%; }
+  .testi-feature-img { max-width: 460px; }
+  .testi-feature-img img { max-height: 320px; }
   .testi-with-image { padding: 72px 5%; }
 
   /* Trust grid */
@@ -745,13 +778,24 @@ footer { background: #0D1620; padding: 48px 5%; }
   nav { padding: 0 4%; }
 
   /* Hero */
-  .hero { padding: 90px 4% 60px; }
+  .hero { padding: 90px 4% 50px; }
   .hero h1 { font-size: 34px; line-height: 1.1; }
   .hero-sub { font-size: 15px; }
   .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-  .phone-shell { width: 260px; transform: scale(0.68); }
-  .phone-screen { height: 740px; }
+
+  /* Phone mockup: much smaller, trimmed to the essentials so it
+     supports the headline instead of dominating the screen */
+  .phone-shell { width: 210px; transform: scale(0.58); }
+  .phone-screen { height: 470px; }
+  .app-body .activity-feed .activity-row:nth-child(n+2) { display: none; }
+  .app-body .coord-msg,
+  .app-body .emergency-btn { display: none; }
+
+  /* Trust strip */
+  .trust-strip { padding: 18px 4%; }
+  .trust-strip-row { gap: 12px 16px; }
+  .trust-check-item { font-size: 12.5px; }
 
   /* Steps: single column */
   .steps { grid-template-columns: 1fr; gap: 28px; }
@@ -784,9 +828,10 @@ footer { background: #0D1620; padding: 48px 5%; }
 
   /* Testimonials */
   .testi-with-image { padding: 56px 4%; }
-  .testi-feature-img { aspect-ratio: 4 / 3; max-height: 280px; }
+  .testi-feature-img { max-width: 100%; }
+  .testi-feature-img img { max-height: 240px; aspect-ratio: 4 / 3; }
   .testi-grid { grid-template-columns: 1fr; }
-  .testi-top { gap: 28px; }
+  .testi-top { gap: 24px; }
 
   /* Pricing */
   .pricing-grid { grid-template-columns: 1fr; }
@@ -870,7 +915,7 @@ footer { background: #0D1620; padding: 48px 5%; }
         <a href="#services" class="btn-secondary">See what's included</a>
       </div>
 
-      <p class="hero-footnote">Free home visit · No contract · 30-day full refund guaranteed</p>
+      <p class="hero-footnote">Free home visit · No contract · 30-day full refund guarantee</p>
 
       <!-- FIXED: Trust note inline, not hidden on mobile -->
       <div class="hero-trust-note" style="margin-top: 24px;">
@@ -882,7 +927,8 @@ footer { background: #0D1620; padding: 48px 5%; }
       </div>
     </div>
 
-    <!-- FIXED: App mockup is visible — the missing USP -->
+    <!-- App mockup — smaller supporting visual, trimmed on mobile so it
+         doesn't outweigh the headline -->
     <div class="hero-right">
       <div style="position: relative; display: inline-block;">
         <div class="phone-shell">
@@ -978,11 +1024,22 @@ footer { background: #0D1620; padding: 48px 5%; }
   </div>
 </section>
 
+<!-- TRUST STRIP — quick-scan checklist right under the hero -->
+<section class="trust-strip">
+  <div class="trust-strip-row">
+    <div class="trust-check-item"><span class="check-mark">✓</span> Police-verified coordinators</div>
+    <div class="trust-check-item"><span class="check-mark">✓</span> 24×7 emergency response</div>
+    <div class="trust-check-item"><span class="check-mark">✓</span> Health updates sent to family</div>
+    <div class="trust-check-item"><span class="check-mark">✓</span> Background-checked staff</div>
+  </div>
+  <p class="trust-strip-sub">Serving families across Bangalore</p>
+</section>
+
 <!-- EMOTIONAL REFRAME — the real job-to-be-done -->
 <section class="guilt-section">
   <div class="guilt-inner">
     <span class="guilt-label">Why families subscribe</span>
-    <h2 class="guilt-h2">You didn't move away to abandon them.<br><em>Stop feeling like you did.</em></h2>
+    <h2 class="guilt-h2">You didn't move away to abandon them.<br>Stop feeling like you did.</h2>
     <p class="guilt-sub">PeakAge doesn't just monitor health. It gives you back the certainty that distance takes away — knowing your parents are actually okay.</p>
     <figure class="guilt-photo">
       <img src="./Peakage Parents image.png" alt="Elderly Indian parents relaxing at home with tea and a newspaper" loading="lazy">
@@ -1007,7 +1064,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <!-- TRUST PROTOCOL — now reinforced, not buried -->
 <section class="section" id="trust">
   <span class="section-label">The trust protocol</span>
-  <h2 class="section-h2">You'll know <em>exactly</em> who walks through their door.</h2>
+  <h2 class="section-h2">You'll know exactly who walks through their door.</h2>
   <p class="section-body">The biggest reason families hesitate: sending an unknown person to their parents' home. We removed that barrier completely — before the first visit ever happens.</p>
 
   <div class="trust-grid">
@@ -1046,7 +1103,7 @@ footer { background: #0D1620; padding: 48px 5%; }
     </div>
     <div class="problem-cards-col">
       <span class="section-label" style="color: var(--amber); margin-bottom: 14px; display: block;">The gap we close</span>
-      <h2 class="section-h2" style="color: #fff; margin-bottom: 14px;">Four problems that keep you up at night.<br><em>One plan that ends all four.</em></h2>
+      <h2 class="section-h2" style="color: #fff; margin-bottom: 14px;">Four problems that keep you up at night.<br>One plan that ends all four.</h2>
       <p class="section-body" style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">Every call ends with "haan, sab theek hai" — and you have no idea if that's true.</p>
   <div class="problem-cards">
     <div class="problem-card">
@@ -1082,7 +1139,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <section class="services-section" id="services">
   <div class="services-intro">
     <span class="section-label">What's included</span>
-    <h2 class="section-h2">Six services. <em>One plan.</em> Nothing for you to coordinate.</h2>
+    <h2 class="section-h2">Six services. One plan. Nothing for you to coordinate.</h2>
     <p class="section-body">Everything runs through your dedicated coordinator. One number. One person. Everything handled.</p>
   </div>
   <div class="services-grid">
@@ -1160,7 +1217,6 @@ footer { background: #0D1620; padding: 48px 5%; }
         <span class="service-freq">24×7</span>
       </div>
       <h3>Emergency response</h3>
-      <p class="service-promise">"You can board a flight without the fear."</p>
       <p>Fall, chest discomfort, sudden illness — someone trained is at their door in under 30 minutes.</p>
       <ul>
         <li>You're notified instantly, everything handled</li>
@@ -1175,7 +1231,7 @@ footer { background: #0D1620; padding: 48px 5%; }
   <div class="split-section reverse">
     <div class="split-text">
       <span class="section-label">Your coordinator</span>
-      <h2 class="section-h2">They know your parents.<br><em>Not a case number.</em></h2>
+      <h2 class="section-h2">They know your parents.<br>Not a case number.</h2>
       <p class="section-body" style="margin-bottom: 28px;">Your coordinator isn't a rotating staff member. It's the same person, every visit, building real trust with your parents over time. They handle everything — so your parents feel cared for, not managed, and you stop feeling helpless from 1,000 km away.</p>
       <div class="coord-profile" style="background: var(--cream-dark); border-radius: var(--radius); padding: 24px;">
         <div class="coord-header">
@@ -1232,11 +1288,15 @@ footer { background: #0D1620; padding: 48px 5%; }
   </div>
 </section>
 
-<!-- HEALTH CHECK IMAGE SPLIT -->
-<div class="split-section reverse" style="background: var(--cream-dark);">
+<!-- HEALTH CHECK IMAGE SPLIT — image leads, text follows, alternating the
+     rhythm against the Coordinator section above -->
+<div class="split-section" style="background: var(--cream-dark);">
+  <div class="split-img">
+    <img src="./HM checking BP.png" alt="PeakAge coordinator checking elderly father's blood pressure at home" loading="lazy">
+  </div>
   <div class="split-text">
     <span class="section-label">Health check at home</span>
-    <h2 class="section-h2">BP. Sugar. ECG.<br><em>Done at their door.</em></h2>
+    <h2 class="section-h2">BP. Sugar. ECG.<br>Done at their door.</h2>
     <p class="section-body" style="margin-bottom: 24px;">No hospital trips. No arranging transport. No asking your parents to remember their numbers. Every 15 days, your coordinator brings the check to them. Results go directly to you.</p>
     <div style="display: flex; flex-direction: column; gap: 10px;">
       <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);">
@@ -1253,16 +1313,13 @@ footer { background: #0D1620; padding: 48px 5%; }
       </div>
     </div>
   </div>
-  <div class="split-img">
-    <img src="./HM checking BP.png" alt="PeakAge coordinator checking elderly father's blood pressure at home" loading="lazy">
-  </div>
 </div>
 
 <!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div style="text-align:center; max-width:580px; margin:0 auto;">
     <span class="section-label" style="display:inline-block;">How it starts</span>
-    <h2 class="section-h2" style="margin:12px auto 12px; text-align:center;">Up and running in <em>4 steps</em></h2>
+    <h2 class="section-h2" style="margin:12px auto 12px; text-align:center;">Up and running in 4 steps</h2>
     <p class="section-body" style="margin:0 auto; text-align:center;">No hospital visits. No apps for your parents to learn. Just WhatsApp and someone they trust.</p>
   </div>
   <div class="steps">
@@ -1297,7 +1354,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <section class="pricing-section" id="pricing">
   <div style="text-align:center;">
     <span class="section-label" style="display:inline-block;">Plans & pricing</span>
-    <h2 class="section-h2" style="margin:12px auto 12px; text-align:center;">Less than you think.<br><em>More than you expected.</em></h2>
+    <h2 class="section-h2" style="margin:12px auto 12px; text-align:center;">Less than you think. More than you expected.</h2>
     <p class="section-body" style="margin:0 auto 40px; text-align:center;">No per-visit fees. No coordination overhead. One flat monthly rate, all inclusive.</p>
   </div>
 
@@ -1361,7 +1418,7 @@ footer { background: #0D1620; padding: 48px 5%; }
   <p class="money-back"><span>↩</span> 30-day full refund guarantee. Not satisfied in the first month — every rupee back.</p>
 </section>
 
-<!-- TESTIMONIALS — son image featured -->
+<!-- TESTIMONIALS — image stacked above the headline, centered, not competing side-by-side -->
 <section class="testi-with-image">
   <div class="testi-top">
     <div class="testi-feature-img">
@@ -1369,8 +1426,8 @@ footer { background: #0D1620; padding: 48px 5%; }
     </div>
     <div class="testi-feature-text">
       <span class="section-label">What families say</span>
-      <h2 class="section-h2">Used by families across Bangalore.<br><em>Adult children who stopped worrying.</em></h2>
-      <p class="section-body" style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">The first Sunday you open the weekly update and see your parents are fine — and realise you didn't spend the week anxious — that's when it clicks.</p>
+      <h2 class="section-h2">Finally, peace of mind.</h2>
+      <p class="section-body" style="margin-bottom: 28px;">The first Sunday you open the weekly update and see your parents are fine — and realise you didn't spend the week anxious — that's when it clicks.</p>
       <div class="testi-card" style="max-width: 480px;">
         <p class="testi-highlight">The guilt finally lifted</p>
         <div class="testi-journey">Singapore — Koramangala, Bangalore</div>
@@ -1428,7 +1485,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <!-- CITIES — Lucknow gets a proper CTA now -->
 <section class="cities-section" id="cities">
   <span class="section-label" style="display:inline-block; margin-bottom: 14px;">Where we operate</span>
-  <h2 class="section-h2" style="margin: 0 auto 18px; text-align: center;">City by city. <em>Growing fast.</em></h2>
+  <h2 class="section-h2" style="margin: 0 auto 18px; text-align: center;">City by city. Growing fast.</h2>
   <p class="section-body" style="margin: 0 auto 36px; text-align: center;">We're live in Bangalore and expanding. Lucknow launches August 2026 — register now to be first in line.</p>
   <div class="cities-grid">
     <div class="city-chip city-live"><span class="city-dot"></span> Bangalore — live now</div>
@@ -1462,7 +1519,7 @@ footer { background: #0D1620; padding: 48px 5%; }
 <section class="faq-section" id="faq">
   <div style="text-align:center; margin-bottom:44px;">
     <span class="section-label" style="display:inline-block;">FAQ</span>
-    <h2 class="section-h2" style="text-align:center; margin:12px auto 0;">Everything you want to know<br><em>before subscribing.</em></h2>
+    <h2 class="section-h2" style="text-align:center; margin:12px auto 0;">Everything you want to know before subscribing.</h2>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Do I need to sign a contract? Can I cancel?<div class="faq-icon">+</div></div>
